@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Chat with Krishaya</title></head>
+<body>
+  <h3>Chat with Krishaya 👩‍🌾</h3>
+  <input id="msg" type="text" placeholder="Ask something..." />
+  <button onclick="send()">Send</button>
+  <div id="chat"></div>
+
+  <script>
+    async function send() {
+      const userMsg = document.getElementById('msg').value;
+      const res = await fetch('/ask', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({message: userMsg})
+      });
+      const data = await res.json();
+      document.getElementById('chat').innerHTML += `<p><b>You:</b> ${userMsg}</p><p><b>Bot:</b> ${data.reply}</p>`;
+    }
+  </script>
+</body>
+</html>
