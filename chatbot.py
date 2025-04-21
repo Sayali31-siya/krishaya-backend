@@ -1,4 +1,5 @@
 import pandas as pd
+from chatbot import chatbot_reply
 
 # Load crop data
 data = pd.read_csv("Mergedcrops.csv")
